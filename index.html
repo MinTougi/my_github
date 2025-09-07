@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guia Prático: Git & GitHub</title>
+    <meta name="description" content="Guia rápido sobre conceitos, fluxos de trabalho e resolução de conflitos em Git e GitHub." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="cabecalho-principal">
+        <div class="container hero-banner">
+            <h1 class="titulo-principal">Guia Prático: Git & GitHub</h1>
+            <p class="subtitulo">Conceitos chave, fluxos de trabalho e como lidar com conflitos no dia a dia.</p>
+
+            <nav class="navegacao-secoes" aria-label="Navegação do conteúdo">
+                <a href="#conceitos">O Essencial</a>
+                <a href="#fluxos">Trabalhando em Equipe</a>
+                <a href="#conflitos">Resolvendo Problemas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="conceitos" class="painel-secao">
+            <h2>Dominando o Essencial: Git & GitHub</h2>
+
+            <div class="layout-flex duas-colunas">
+                <article>
+                    <h3>Comandos Essenciais</h3>
+                    <pre><code>git init                  # Inicia um novo repositório local
+git clone &lt;url&gt;           # Clona um projeto remoto
+git status                # Checa o estado atual das mudanças
+git add &lt;arquivos&gt;        # Adiciona arquivos para o próximo commit
+git commit -m "mensagem"  # Salva as mudanças
+git switch -c feature/x   # Cria e muda para uma nova branch
+git push -u origin feature/x # Envia a branch para o remoto
+git pull --rebase origin main # Atualiza sua branch com as novidades
+</code></pre>
+                </article>
+                
+                <article>
+                    <h3>Glossário de Termos</h3>
+                    <dl class="lista-termos">
+                        <dt><strong>Git vs. GitHub</strong></dt>
+                        <dd><strong>Git</strong> é um sistema de controle de versão local. <strong>GitHub</strong> é a plataforma online para hospedar seus projetos Git.</dd>
+
+                        <dt><strong>Repositório (repo)</strong></dt>
+                        <dd>A pasta do seu projeto, versionada pelo Git.</dd>
+
+                        <dt><strong>Commit</strong></dt>
+                        <dd>Um "instantâneo" das suas mudanças, sempre com uma mensagem descritiva.</dd>
+                        
+                        <dt><strong>Branch</strong></dt>
+                        <dd>Uma linha de desenvolvimento paralela para novas funcionalidades, como <code class="inline">feature/nova-pagina</code>.</dd>
+
+                        <dt><strong>Remote</strong></dt>
+                        <dd>A versão do seu repositório que fica na nuvem, como o <code class="inline">origin</code> no GitHub.</dd>
+
+                        <dt><strong>Clone</strong></dt>
+                        <dd>Baixar uma cópia do repositório remoto para sua máquina.</dd>
+
+                        <dt><strong>Fork</strong></dt>
+                        <dd>Criar uma cópia de um repositório no seu próprio perfil do GitHub para poder colaborar.</dd>
+
+                        <dt><strong>Pull Request (PR)</strong></dt>
+                        <dd>Proposta para juntar suas alterações em outra branch, geralmente na <code class="inline">main</code>. É o momento de revisão de código.</dd>
+
+                        <dt><strong>Stash</strong></dt>
+                        <dd>Armazenar mudanças temporariamente sem precisar fazer um commit.</dd>
+
+                        <dt><strong>Tag/Release</strong></dt>
+                        <dd>Uma marcação permanente em um ponto específico do histórico, usada para versões como <code class="inline">v1.0.0</code>.</dd>
+                    </dl>
+                </article>
+            </div>
+        </section>
+
+        <section id="fluxos" class="painel-secao">
+            <h2>Fluxos de Trabalho (Workflows)</h2>
+
+            <div class="layout-flex duas-colunas">
+                <article>
+                    <h3>GitHub Flow (Simples e Direto)</h3>
+                    <p>Ideal para times que precisam de agilidade e entrega contínua.</p>
+                    <ol>
+                        <li>Parta da branch <code class="inline">main</code> e crie uma nova branch para sua tarefa.</li>
+                        <li>Trabalhe e faça commits com mensagens claras.</li>
+                        <li>Envie sua branch para o GitHub.</li>
+                        <li>Abra um <strong>Pull Request</strong> e descreva suas mudanças.</li>
+                        <li>Aguarde a revisão de código e a aprovação dos testes.</li>
+                        <li>Faça o "Squash & Merge" para a <code class="inline">main</code> e delete a branch.</li>
+                    </ol>
+                </article>
+
+                <article>
+                    <h3>Git Flow (Estrutura Completa)</h3>
+                    <p>Ótimo para projetos que precisam de um gerenciamento mais rígido de versões e lançamentos.</p>
+                    <ul>
+                        <li><code class="inline">main</code>: sempre contém o código estável.</li>
+                        <li><code class="inline">develop</code>: a branch principal para o desenvolvimento.</li>
+                        <li><code class="inline">feature/*</code>: branches para novas funcionalidades.</li>
+                        <li><code class="inline">release/*</code> e <code class="inline">hotfix/*</code>: branches específicas para preparação de lançamentos e correções urgentes.</li>
+                    </ul>
+                    <p><strong>Exemplo de um ciclo de trabalho:</strong></p>
+                    <pre><code># 1) Inicie a partir da develop
+git switch develop
+git switch -c feature/login
+
+# 2) Trabalhe, commite e envie
+# 3) Abra um PR para 'feature/login -> develop'
+# 4) Quando pronto, prepare a release e merge em main
+</code></pre>
+                </article>
+            </div>
+
+            <div class="aviso dica" role="note">
+                <p>Dica: Estabeleça padrões de mensagens de commit e templates de Pull Request. Isso acelera o processo de revisão e melhora a organização do projeto.</p>
+            </div>
+        </section>
+
+        <section id="conflitos" class="painel-secao">
+            <h2>Lidando com Conflitos de Merge</h2>
+            <p><strong>Quando surgem?</strong> Conflitos acontecem quando duas pessoas alteram a mesma parte do mesmo arquivo. Isso geralmente ocorre em operações de <code class="inline">merge</code> ou <code class="inline">rebase</code>.</p>
+            
+            <h3>Passo a Passo para Resolver</h3>
+            <ol>
+                <li>Execute o comando que causou o conflito, como <code class="inline">git pull --rebase origin main</code>.</li>
+                <li>O Git irá pausar a operação e marcar os arquivos com conflito.</li>
+                <li>Abra cada arquivo e edite as seções marcadas com <code class="inline">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> e <code class="inline">=======</code>, decidindo qual versão do código você quer manter.</li>
+                <li>Depois de resolver, adicione o arquivo com <code class="inline">git add .</code>.</li>
+                <li>Finalize a operação com <code class="inline">git rebase --continue</code>.</li>
+                <li>Envie as mudanças para o remoto com <code class="inline">git push</code>.</li>
+            </ol>
+
+            <div class="aviso atencao" role="note">
+                <p><strong>Fica a dica:</strong> Sincronize seu trabalho com o repositório remoto com frequência. Isso reduz drasticamente a chance de encontrar conflitos grandes e complexos.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape-simples container">
+        <small>&copy; 2025 Guia Git &amp; GitHub — Material para estudos.</small>
+    </footer>
+
+</body>
+</html>
