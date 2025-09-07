@@ -1,0 +1,187 @@
+/* Importação da fonte do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono&display=swap');
+
+/* --- ESTILOS GERAIS --- */
+
+:root {
+    --cor-fundo: #f4f4f9;
+    --cor-texto: #333;
+    --cor-primaria: #005f73;
+    --cor-secundaria: #0a9396;
+    --cor-acento: #e9d8a6;
+    --cor-sucesso: #94d2bd;
+    --cor-aviso: #ee9b00;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+
+.cabecalho-principal {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.titulo-principal {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.subtitulo {
+    font-size: 1.1em;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+.navegacao-secoes {
+    margin-top: 25px;
+}
+
+.navegacao-secoes a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.navegacao-secoes a:hover {
+    color: var(--cor-acento);
+}
+
+/* --- SEÇÕES E CONTEÚDO --- */
+
+.painel-secao {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 25px;
+    padding: 30px;
+}
+
+h2 {
+    color: var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+}
+
+h3 {
+    color: var(--cor-secundaria);
+    margin-top: 0;
+}
+
+/* Estilo para o layout de duas colunas */
+.duas-colunas {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Estilo para listas */
+ul, ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Estilo para lista de definições (dl) */
+.lista-termos dt {
+    font-weight: bold;
+    color: var(--cor-primaria);
+    margin-top: 15px;
+}
+
+.lista-termos dd {
+    margin-left: 0;
+    padding-left: 15px;
+    border-left: 3px solid var(--cor-secundaria);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+
+/* Estilo para blocos de código */
+pre {
+    background-color: #eef2f5;
+    border-radius: 6px;
+    padding: 15px;
+    overflow-x: auto;
+    border: 1px solid #d4d8de;
+}
+
+code.inline {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #eef2f5;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+pre code {
+    display: block;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95em;
+    color: #333;
+}
+
+/* Estilo para os blocos de aviso */
+.aviso {
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 30px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.aviso::before {
+    content: "💡"; /* Ícone de lâmpada */
+    font-size: 1.5em;
+}
+
+.aviso.atencao::before {
+    content: "⚠️"; /* Ícone de alerta */
+}
+
+.aviso.dica {
+    background-color: var(--cor-sucesso);
+    border: 1px solid var(--cor-secundaria);
+}
+
+.aviso.atencao {
+    background-color: var(--cor-aviso);
+    border: 1px solid #c76f00;
+}
+
+/* --- RODAPÉ --- */
+
+.rodape-simples {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    color: #777;
+    font-size: 0.9em;
+}
